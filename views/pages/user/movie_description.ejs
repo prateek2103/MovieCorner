@@ -1,0 +1,115 @@
+<%- include ('../../partials/header.ejs') %>
+    <link rel="stylesheet" href="/static/css/movie_desc.css">
+
+    </head>
+
+    <body>
+        <%- include("../../partials/nav.ejs") %>
+            <div class="container-fluid">
+                <!-- success message -->
+        
+                <div class="row">
+
+                    <!-- image -->
+                    <div class="col-lg-4 col-md-5 col-sm-12">
+                        <div class="content-image" style='background-image:url("<%=movie_data["image"] %>")'></div>
+                    </div>
+
+                    <!-- info of the movie -->
+                    <div class="col-lg-8 col-md-7 col-sm-12">
+                        <div class='content-box'>
+                            <table class="table table-hover table-dark table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Feature</th>
+                                        <th scope="col">Information</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Movie Name</td>
+                                        <td>
+                                            <%= movie_data["movie_title"] %>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Release date</td>
+                                        <td>
+                                            <%= movie_data["release_date"]%>
+                                        </td>
+                                    </tr>
+                                    <% movie_data["filtered_genres"].forEach(genre=> { %>
+                                        <tr>
+                                            <td>
+                                                <%= genre %>
+                                            </td>
+                                            <td><span class="material-icons">
+                                                    done
+                                                </span></td>
+                                        </tr>
+                                        <%})%>
+                                        <tr>
+                                            <td><b>Rate it</b></td>
+                                            <td>
+                                                <% for(let i=0; i < 5;i++){ %>
+                                                    <%if(i < movie_data['rating']) { %>
+                                                        <span class="material-icons" style="font-size:40px;color:yellow;" id="<%= i %>" onclick="addStars(this)">
+                                                            star_border
+                                                        </span>
+                                                    <% } else{ %>
+                                                        <span class="material-icons" style="font-size:40px;" id="<%= i %>" onclick="addStars(this)">
+                                                            star_border
+                                                        </span>
+                                                    <%}%>
+                                                <%}%>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                            <br>
+                            <!-- stars -->
+                           
+                            <!-- <center>
+                            <h3>Your Ratings</h3>
+                            <% for(let i=0; i < 5;i++){ %>
+                                <%if(i < movie_data['rating']) { %>
+                                    <span class="material-icons" style="font-size:40px;color:yellow;" id="<%= i %>" onclick="addStars(this)">
+                                        star_border
+                                    </span>
+                                <% } else{ %>
+                                    <span class="material-icons" style="font-size:40px;" id="<%= i %>" onclick="addStars(this)">
+                                        star_border
+                                    </span>
+                                <%}%>
+                            <%}%>
+                        </center> -->
+                        <br>
+                            <form
+                                action="<%= `/user/save_user_rating/${movie_data['movie_id']}/${movie_data['movie_title']}/${movie_data['image'].substr(36)}` %>"
+                                method="post">
+                                <input type="number" id="rating" name="rating" style="display: none";/>
+                                <center>
+                                    <button type="submit" id="submit" style="display: none" class="btn btn-outline-light px-5">Submit</button>
+                                </center>
+                            </form><br>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <%- include("../../partials/footer.ejs") %>
+            <script>
+                function addStars(e){
+                    for(let i=0;i<5;i++){
+                        document.getElementById(i).style.color="white";
+                    }
+
+                    for(let i=0;i<=e.id;i++){
+                        document.getElementById(i).style.color="yellow";
+                    }
+                    document.getElementById('rating').value = Number(e.id)+1
+                    document.getElementById("submit").style.display = "block"
+                }
+            </script>

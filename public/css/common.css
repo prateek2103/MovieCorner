@@ -1,0 +1,36 @@
+body{
+    font-size:1em;
+}
+
+#navi{
+    margin-right:40px;
+}
+
+#navi li{
+    margin-right:20px;
+}
+#navi a{
+   padding:7px 10px ;
+}
+
+@media (max-width:999px){
+     /* navbar settings */
+     .navbar-collapse{
+        padding:10px;
+        z-index: 9999;
+        text-align: center;
+        background: black;
+        position: relative;
+    }
+    .navbar-collapse > ul{
+        width:100%;
+        margin:auto;
+    }
+    .navbar-collapse > ul>li{
+        margin-left:20px;
+    }
+    .navbar-collapse > ul > button{
+        margin-top:10px;
+    }
+   
+}

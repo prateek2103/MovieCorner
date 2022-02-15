@@ -1,0 +1,90 @@
+.top{
+    background-image:url("/static/images/homepage.jpg");
+    background-size:cover;
+    width:100%;
+    height:600px;
+}
+
+#overlay{
+    background-color: rgba(0,0,0,0.7);
+    height:600px;
+}
+
+.top-content{
+    margin:150px auto 0 auto;
+    width:50%;
+    text-align: center;
+    color:white;
+}
+
+.top span{
+    font-size:18px;
+    opacity: 0.7;
+}
+
+.top-content a{
+    margin-top:40px;
+    font-size:17px;
+    padding:2% 5%;
+}
+
+.mid,.bottom{
+    padding:10% ;
+    color:white;
+    margin:auto;
+    background:rgb(0,0,0);
+    height:auto;
+}
+
+
+.mid span,.bottom span{
+    margin-top:0.25%;
+    font-size:20px;
+    opacity: 0.5;
+}
+
+.bottom h1{
+    margin-top:40px;
+}
+
+@media (max-width:999px){
+    .top{
+        height:700px;
+    }
+    .top-content{
+        width:100%;
+    }
+    .mid{
+        padding-top:5%;
+    }
+    .mid img,.bottom img{
+        max-width:100%;
+        margin-bottom:20px;
+    }
+    .bottom{
+        text-align: center;
+    }
+    .bottom img{
+        padding-top:40px;
+    }
+    .mid h1{
+        margin-top:20px;
+    }
+    .mid{
+        text-align: center;
+    }
+    .mid span, .bottom span{
+        font-size:15px;
+    }
+}
+
+@media (min-width:1000px){
+.mid img,.bottom img{
+    max-width: 80%;
+    margin:auto;
+}
+
+.bottom img{
+    float:right
+}
+}

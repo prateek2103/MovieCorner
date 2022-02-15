@@ -1,0 +1,119 @@
+<%- include("../../partials/header.ejs") %>
+    <link rel="stylesheet" href="/static/css/registration.css">
+    </head>
+
+    <body>
+        <%- include("../../partials/nav.ejs") %>
+            <!-- error message -->
+            <% if (flashMessage.length>0) {%>
+                <div class="alert alert-danger" style="position: fixed;top:2px;width:80%;left:10%;right:10%;">
+                    <%= flashMessage %>
+                        <button class="material-icons btn btn-danger" onclick="closeDiv()"
+                            style="float:right;margin-top:-1px;border:none;margin-right:5px">
+                            close
+                            </span>
+                </div>
+            <% } %>
+
+            <div class="signup-box">
+                <div class="row box">
+                     <!-- left panel -->
+                    <div class="col-lg-7 col-md-12 col-sm-12 left-pane">
+                        <div class="overlay">
+                            <div class="left-pane-content">
+                                <h1 class="display-4">Join us and be a part of our community.</h1>
+                                <span>Browse over hundreds of choices of movies all around the world.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- right panel -->
+                    <div class="col-lg-5 col-md-12 col-sm-12">
+                        <div class="right-pane-content">
+                            <h1>Happy to have you onboard :)</h1>
+                            <span>With our recommendation system your taste will always be our priorites.</span>
+                        </div>
+
+                        <form onsubmit="return signUser()" method="POST">
+                            <!-- Name -->
+                            <input class="form-control" type="text" name="name" minlength="3"
+                                onkeydown=validate_name() onkeyup=validate_name() placeholder="Name" required>
+                            <div class="alert alert-danger" id="error_name"></div>
+
+                            <!-- email -->
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">@</span>
+                                </div>
+                                <input type="email" class="form-control" name="email" placeholder="Email" required>
+                            </div>
+                           
+
+                            <!-- age -->
+                            <input class="form-control" type="number" min="0" max="100" name="age"
+                                onkeydown=validate_age() onkeyup=validate_age() placeholder="Age" required>
+                            <div class="alert alert-danger" id="error_age"></div>
+
+                            <!-- gender -->
+                            <label for="gender">Gender:</label>
+                            <select class="form-select" name="gender">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+
+                            <!-- occupation -->
+                            <label for="occupation">Occupation:</label>
+                            <select class="form-select" name="occupation">
+                                <option> Select an occupation </option>
+                                <% for(var i=0; i < occupations.length; i++) { %>
+                                    <option value=<%=occupations[i] %>><%= occupations[i] %>
+                                    </option>
+                                    <% } %>
+                            </select>
+
+                            <!-- country -->
+                            <label for="Country" name='country'>Country:</label>
+                            <select class="form-select" name="country">
+                                <option value="India">India</option>
+                                <option value="USA">USA</option>
+                                <option value="Italy">Italy</option>
+                            </select>
+
+                            <!-- password -->
+                            <label for="password">Password:</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" minlength="8" name="password"
+                                    onkeydown=validate_password() onkeyup=validate_password()
+                                    placeholder="Password">
+                                <div class="input-group-append">
+                                    <span class="input-group-text material-icons" id="basic-addon1">lock</span>
+                                </div>
+                            </div>
+                            <div class="alert alert-danger" id="error_pass"></div>
+                            
+                            <!-- submit button -->
+                            <button class="btn btn-outline-light" type="submit">Signup</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="after-signup-box">
+                <img src="/static/images/loading.gif"/>
+                <h1 class="display-2">Hold on while we set a few things for you</h1>
+            </div>
+
+
+            <!-- validation check for each field -->
+            <script src="/static/js/validation-signup.js"></script>
+            <script>
+                function signUser(){
+                    document.getElementsByClassName("signup-box")[0].style.display="none"
+                    document.getElementsByClassName("after-signup-box")[0].style.display = "block"
+
+                    return "/user/signup"
+                }
+            </script>
+
+<%- include("../../partials/footer.ejs") %>

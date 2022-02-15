@@ -1,0 +1,47 @@
+<%- include ('../../partials/header.ejs') %>
+    <link rel="stylesheet" href="/static/css/trending.css">
+    </head>
+
+    <body>
+        <%- include("../../partials/nav.ejs") %>
+            <div class="container-fluid">
+                <h2>Top 50 Trending movies</h2><br>
+                <div class="row">
+                <% list_data.forEach((ele,index)=> { %>
+                    <div class="window-box"  onclick='myhref("/user/movie_description/<%= ele["name"] %>")'>
+                        <div class="item" style='background-image:url("<%= ele["link"] %>")'></div> 
+                        <div class="item-details">
+                            <h2>Genres</h2><br>
+                            <% ele['genre'].forEach((genre)=>{ %>
+                                <h5>
+                                    <%= genre %>
+                                </h5>
+                                <% }) %>
+                        </div>
+                        <span style="display: inline;">
+                            <%= ele['name'] %>
+                        </span>
+                    </div>            
+                <%})%>
+            </div>
+            </div>
+
+           
+
+            <%- include("../../partials/footer.ejs") %>
+            <script type="text/javascript">
+                function myhref(web) {
+                    window.location.href = web;
+                }
+
+                $(document).ready(function () {
+                $("div.window-box").hover(function () {
+                    $(this).find(".item").css("display", "none");
+                    $(this).find(".item-details").css("display", "block")
+                }, function () {
+                    $(this).find(".item").css("display", "block");
+                    $(this).find(".item-details").css("display", "none")
+                })
+            })
+            </script>
+           

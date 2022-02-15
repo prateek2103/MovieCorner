@@ -1,0 +1,72 @@
+const mongoose = require('mongoose')
+const movieSchema = mongoose.Schema({
+    "movie_id":{
+        type:Number
+    },
+    "movie_title":{
+        type:String
+    },
+    "release_date":{
+        type:String
+    },
+    "IMDb_URL":{
+        type:String
+    },
+    "unknown":{
+        type:Number
+    },
+    "Action":{
+        type:Number
+    },
+    "Adventure":{
+        type:Number
+    },
+    "Animation":{
+        type:Number
+    },
+    "Comedy":{
+        type:Number
+    },
+    "Crime":{
+        type:Number
+    },
+    "Documentary":{
+        type:Number
+    },
+    "Drama":{
+        type:Number
+    },
+    "Fantasy":{
+        type:Number
+    },
+    "Film-Noir":{
+        type:Number
+    },
+    "Horror":{
+        type:Number
+    },
+    "Musical":{
+        type:Number
+    },
+    "Mystery":{
+        type:Number
+    },
+    "Romance":{
+        type:Number
+    },
+    "Sci-Fi":{
+        type:Number
+    },
+    "Thriller":{
+        type:Number
+    },
+    "War":{
+        type:Number
+    },
+    "Western":{
+        type:Number
+    }
+})
+
+const movieModel = mongoose.model("movies",movieSchema);
+module.exports = movieModel

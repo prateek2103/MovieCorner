@@ -1,0 +1,174 @@
+body{
+    background:black;
+    color:white;
+    font-size:1em;
+}
+
+.signup-box{
+    height:900px;
+    padding:5% 2% 5% 2%;
+    width:80%;
+    margin:auto auto 10% auto;
+   
+}
+
+.box{
+    box-shadow: 0px 0px 0px 5px #ccc;
+}
+
+.overlay{
+    background:rgba(0,0,0,0.9);
+    height:815px;
+  
+}
+
+.left-pane{
+    background-image:url('/static/images/left-pane.jpg');
+    background-size:cover;
+    padding:0px;
+}
+
+
+.left-pane-content{
+    padding:30% 20% 0 10%;
+    color:white;
+}
+
+.left-pane-content > h1{
+    margin-bottom:5%;
+    font-weight:600;
+}
+
+.right-pane-content span,.left-pane-content span{
+    opacity: 0.5;
+    font-size:1.1em;
+}
+
+.right-pane-content{
+    width:80%;
+    margin:auto;
+    padding-top:5%;
+}
+
+#error_name,#error_age,#error_pass{
+    width:100%;
+    margin-top:-5%;
+    padding:10px;
+    display:none;
+}
+
+form{
+    padding:6% 10% 10% 10%;
+}
+
+form label{
+    margin-bottom:1%;
+}
+
+div.input-group{
+    margin:0px;
+}
+.form-control ,.form-select,.input-group{
+    margin-bottom:5%;
+    width:100%;
+}
+
+form > button{
+    margin-top:10%;
+    padding:5% ;
+    width:100%;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.after-signup-box{
+    text-align:center;
+    width:80%;
+    margin:auto;
+    padding-top:10%;
+    display:none;
+}
+
+.after-signup-box > img{
+    width: 7%;
+    margin-bottom: 2%;
+}
+
+@media (max-width:999px){
+    .signup-box{
+        width:90%;
+    }
+    .overlay{
+        height:600px;
+        width:100%;
+    }
+
+    .box{
+        box-shadow: none;
+    }
+
+    .right-pane-content{
+        padding-top:10%;
+    }
+    form{
+        padding-top:5%;
+    }
+    form>button{
+        margin-top:5%;
+    }
+
+    .after-signup-box{
+        width:100%;
+        padding-top: 30%;
+    }
+
+    .after-signup-box > img{
+        margin-bottom:10%;
+        width:20%;
+    }
+}
+
+@media (max-width:468px){
+    .signup-box{
+        width:100%;
+    }
+    .overlay{
+        width:100%;
+        height:400px;
+    }
+    .box{
+        box-shadow:none;
+    }
+    .left-pane-content>h1,.right-pane-content>h1{
+        font-size:25px;
+    }
+    .right-pane-content{
+        padding-top:10%;
+    }
+    form{
+        padding:15% 5%;
+    }
+  
+    .after-signup-box{
+        width:100%;
+        padding-top: 30%;
+    }
+    .after-signup-box > h1{
+        font-size:30px;
+    }
+
+    .after-signup-box > img{
+        margin-bottom:10%;
+        width:20%;
+    }
+}

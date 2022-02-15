@@ -1,0 +1,31 @@
+{
+  "name": "streamline",
+  "version": "1.0.0",
+  "description": "1) clone the repository\r 2) From the repository directory run \"npm install\" to install all the dependencies\r 3) from terminal run \"npm test\".\r 4) check your browser on \"localhost:3000/index\"",
+  "main": "db.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prateek2103/streamline.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prateek2103/streamline/issues"
+  },
+  "homepage": "https://github.com/prateek2103/streamline#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "csv-write-stream": "^2.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "mongoose": "^5.13.2",
+    "nodemon": "^2.0.15"
+  }
+}

@@ -1,0 +1,50 @@
+<%- include ('../../partials/header.ejs') %>
+<link rel="stylesheet" href="/static/css/homepage.css">
+</head>
+
+<body>
+    <!-- <div class="container-fluid"> -->
+    <!-- Top section -->
+    <div class="top">
+        <div id="overlay">
+            <%- include ('../../partials/nav.ejs') %>
+        <div class="top-content">
+            <h1 class="display-4">A good movie is always hard <br>to find</h1>
+            <span>But, we can help you with that</span><br>
+            <a href="/user/signup" class="btn btn-outline-light">Signup</a>
+        </div>
+    </div>
+    </div>
+
+    <!-- mid section -->
+    <div class="mid">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <img src="/static/images/mid-image-1.png">
+            </div>
+
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <h1 class="display-5 ">Browse over hundreds of movies from various platforms.</h1><br>
+                <span>Netflix, Prime, Hulu and much more </span>
+            </div>
+        </div>
+    </div>
+
+    <div style="background:rgb(83, 82, 82);height:1px;"></div>
+
+     <!-- last section -->
+     <div class="bottom">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <h1 class="display-5">Your taste is always our top priority.</h1><br>
+                <span>Get movie recommendations on the go.</span>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <img src="/static/images/bottom-image.jpg">
+            </div>
+        </div>
+    </div>
+<!-- </div> -->
+        
+
+<%- include ('../../partials/footer.ejs') %>

@@ -1,0 +1,105 @@
+<%- include ('../../partials/header.ejs') %>
+    <link rel="stylesheet" href="/static/css/mainpage.css">
+    </head>
+
+    <body>
+        <%- include("../../partials/nav.ejs") %>
+            <% if (successMessage.length>0) {%>
+                <div class="alert alert-success" style="position: fixed;top:2px;width:80%;left:10%;right:10%;">
+                    <%= successMessage %>
+                        <button class="material-icons btn btn-danger" onclick="closeDiv()"
+                            style="float:right;margin-top:-1px;border:none;margin-right:5px">
+                            close
+                            </span>
+                </div>
+            <% } %>
+            
+            <div class="container-fluid">
+                <h2 class="heading">Most watched movies</h2>
+                <div class="row">
+                    <% for(let i=0; i < 15 ;i++){ %>
+                        <div class="window-box"  onclick='myhref("/user/movie_description/<%= user["by_popularity"][i]["name"] %>")'>
+                            <div class="item" style='background-image:url("<%= user["by_popularity"][i]["link"] %>")'></div>
+                               
+                            <div class="item-details">
+                                <h2>Genres</h2><br>
+                                <% user['by_popularity'][i]['genre'].forEach((genre)=>{ %>
+                                    <h5>
+                                        <%= genre %>
+                                    </h5>
+                                    <% }) %>
+                            </div>
+                            <span style="display: inline;">
+                                <%= user["by_popularity"][i]["name"] %>
+                            </span>
+                        </div>
+                        <%}%>
+                </div>
+
+                <h2 class="heading">Top Rated </h2>
+                <div class="row">
+                    <% for(let i=0; i < 15 ;i++){ %>
+                        <div class="window-box" onclick='myhref("/user/movie_description/<%= user["by_rating"][i]["name"] %>");'>
+                            <div class="item" style='background-image:url("<%= user["by_rating"][i]["link"] %>")'></div>
+
+                            <div class="item-details">
+                                <h2>Genres</h2><br> 
+                                <% user['by_rating'][i]['genre'].forEach((genre)=>{ %>
+                                    <h5>
+                                        <%= genre %>
+                                    </h5>
+                                    <% }) %>
+                            </div>
+                            <span style="display: inline;">
+                                <%= user["by_rating"][i]["name"] %>
+                            </span>
+
+
+                        </div>
+                        <%}%>
+                </div>
+
+                <!-- recommendations -->
+                <h2 class="heading">Our recommendations</h2>
+                <div class="row">
+                    <% if(user['by_recommendation'].length==0) {%>
+                        <h2 class="display-6" style="text-align: center;padding-top:40px;margin-bottom:10px;">How about watching a few movies first?</h2>
+                        <span style="text-align: center;opacity:0.8;margin-bottom:40px;">It will give us a better knowlegde of what you like.</span>
+                    <% } %>
+                    <% for(let i=0; i < user["by_recommendation"].length ;i++){ %>
+                        <div class="window-box" onclick='myhref("/user/movie_description/<%= user["by_recommendation"][i]["name"] %>");'>
+                            <div class="item" style='background-image:url("<%= user["by_recommendation"][i]["link"] %>")'></div>
+
+                            <div class="item-details">
+                                <h2>Genres</h2><br> 
+                                <% user['by_recommendation'][i]['genre'].forEach((genre)=>{ %>
+                                    <h5>
+                                        <%= genre %>
+                                    </h5>
+                                    <% }) %>
+                            </div>
+                            <span style="display: inline;">
+                                <%= user["by_recommendation"][i]["name"] %>
+                            </span>
+                        </div>
+                        <%}%>
+                </div>
+            </div>
+
+
+            <%- include("../../partials/footer.ejs") %>
+                <script type="text/javascript">
+                    function myhref(web) {
+                        window.location.href = web;
+                    }
+
+                    $(document).ready(function () {
+                        $("div.window-box").hover(function () {
+                            $(this).find(".item").css("display", "none");
+                            $(this).find(".item-details").css("display", "block")
+                        }, function () {
+                            $(this).find(".item").css("display", "block");
+                            $(this).find(".item-details").css("display", "none")
+                        })
+                    })
+                </script>

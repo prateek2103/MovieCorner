@@ -1,0 +1,85 @@
+<%- include ('../../partials/header.ejs') %>
+    <link rel="stylesheet" href="/static/css/search.css">
+
+    </head>
+
+    <body>
+        <%- include("../../partials/nav.ejs") %>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="search-box col-12">
+                        <span class="material-icons">search</span>
+
+                        <input type="text" class="form-control search-text" onkeyup="getMovies(this)"
+                            placeholder="Search for any movie here">
+                        <!-- <button class="btn btn-outline-light" onclick="getMovies()">search</button> -->
+                    </div>
+                </div>
+
+                <div class="result-box row">
+
+                </div>
+            </div>
+
+
+            <%- include("../../partials/footer.ejs") %>
+                <script type="text/javascript">
+                    function myhref(web) {
+                        window.location.href = web;
+                    }
+
+                    function getMovies(e) {
+                        // let e = document.getElementsByTagName("input")[0]
+                        let movie_url = "search/" + e.value
+                        let resultBox = document.getElementsByClassName("result-box")[0]
+                        resultBox.innerHTML = ""
+
+                        if (e.value != "") {
+                            $(document).ready(function () {
+                                $.ajax({
+                                    url: movie_url, success: function (data) {
+                                        if (data.length == 0)
+                                            resultBox.innerHTML = `<h1 style="color:white;text-align:center;" 
+                                                                    class="display-6">Sorry, No movies are 
+                                                                    available with that name </h1>`
+
+                                        data.forEach(movie => {
+                                            let innerData = `<div class="window-box"  onmouseenter="hoverin(this)" 
+                                                            onmouseleave="hoverout(this)" 
+                                                            onclick="myhref('/user/movie_description/${movie["movie_title"]}')">
+                                                    <div class="item" style='background-image:url("${movie["IMDb_URL"]}")'>
+                                                        </div>  
+                                                    <div class="item-details">
+                                                        <h2>Genres</h2><br>`
+
+                                            for (let key of Object.keys(movie)) {
+                                                if (movie[key] == "1")
+                                                    innerData += `<h5>${key}</h5>`
+                                            }
+                                            innerData += `</div><center><span style="display:inline;">
+                                                            ${movie['movie_title']}
+                                                         </span></center>
+                                                    </div>`
+
+                                            resultBox.innerHTML += innerData
+                                        })
+                                    }
+                                })
+                            })
+                        }
+                    }
+
+                    function hoverin(e) {
+                        $(document).ready(function () {
+                            $(e).find(".item").css("display", "none");
+                            $(e).find(".item-details").css("display", "block")
+                        })
+                    }
+
+                    function hoverout(e) {
+                        $(document).ready(function () {
+                            $(e).find(".item").css("display", "block");
+                            $(e).find(".item-details").css("display", "none")
+                        })
+                    }
+                </script>

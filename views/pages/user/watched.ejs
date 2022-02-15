@@ -1,0 +1,82 @@
+<%- include ('../../partials/header.ejs') %>
+    <link rel="stylesheet" href="/static/css/watched.css">
+
+    </head>
+
+    <body>
+        <%- include("../../partials/nav.ejs") %>
+            <div class="container">
+                <h2>Already Watched</h2>
+                <div class="row">
+                <% list_data.forEach(ele => { %>
+                        <div class="window-box">
+                            <div class="item" style='background-image:url("<%=ele["movie_link"]%>")'></div>
+
+                            <div class="item-details">
+                                <h2>Your rating</h2><br>
+                                <% for(let i=0; i < ele['rating']; i++){ %> 
+                                    <span class="material-icons" style="font-size:30px;color:yellow;" id="<%= i %>">
+                                        star_border
+                                    </span>
+                                <% } %>
+                                <br><br>
+                                <button class="btn btn-outline-light" onclick='myhref("/user/movie_description/<%= ele["movie_title"]%>");'>
+                                    Change
+                                </button>
+                            </div>
+                            <span style="display: inline;">
+                                <%= ele["movie_title"] %>
+                            </span>
+                        </div>
+                        <!-- <div class="col-sm-12 content-image" style='background-image:url("<%=ele["movie_link"]%>")'>
+                        </div>
+                        <div class="col-lg-10 col-md-9 col-sm-12 content-box">
+                            <table class="table table-hover table-dark">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Movie Name</b></td>
+                                        <td>
+                                            <span style="opacity: 0.8;"><%= ele["movie_title"] %></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Your rating</b></td>
+                                        <td>
+                                            <span style="opacity: 0.8;"><%= ele["rating"]%></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Having second thoughts about the movie?</b></td>
+                                        <td>
+                                            <button class="btn btn-outline-danger" onclick='myhref("/user/movie_description/<%= ele["movie_title"]%>");'>Change rating</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table> -->
+                           
+                        <!-- </div> -->
+                    <%})%>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                function myhref(web){
+                  window.location.href = web;}
+            </script>
+
+            <%- include("../../partials/footer.ejs") %>
+            <script type="text/javascript">
+                function myhref(web) {
+                    window.location.href = web;
+                }
+
+                $(document).ready(function () {
+                    $("div.window-box").hover(function () {
+                        $(this).find(".item").css("display", "none");
+                        $(this).find(".item-details").css("display", "block")
+                    }, function () {
+                        $(this).find(".item").css("display", "block");
+                        $(this).find(".item-details").css("display", "none")
+                    })
+                })
+            </script>

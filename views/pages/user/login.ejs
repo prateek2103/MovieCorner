@@ -1,0 +1,74 @@
+<%- include ('../../partials/header.ejs') %>
+    <link rel="stylesheet" href="/static/css/login.css">
+
+    </head>
+
+    <body>
+        <%- include("../../partials/nav.ejs") %>
+            <!-- error message -->
+            <% if (flashMessage.length>0) {%>
+                <div class="alert alert-danger" style="position: fixed;top:2px;width:80%;left:10%;right:10%;">
+                    <%= flashMessage %>
+                        <button class="material-icons btn btn-danger" onclick="closeDiv()"
+                            style="float:right;margin-top:-1px;border:none;margin-right:5px">
+                            close
+                            </span>
+                </div>
+                <%}%>
+
+                    <!-- success message -->
+                    <% if (successMessage.length>0) {%>
+                        <div class="alert alert-success" style="position: fixed;top:2px;width:80%;left:10%;right:10%;">
+                            <%= successMessage %>
+                                <button class="material-icons btn btn-danger" onclick="closeDiv()"
+                                    style="float:right;margin-top:-1px;border:none;margin-right:5px">
+                                    close
+                                    </span>
+                        </div>
+                        <%}%>
+
+                            <!-- login form -->
+                            <div class="login-box shadow-lg rounded">
+                                <h1>Let's Sign you in.</h1>
+                                <h3 style="opacity: 0.5;">Welcome back. You have been missed!</h3>
+                                <form onsubmit="return logUser()" method="POST">
+
+                                    <!-- username -->
+                                    <input class="form-control" name="username" minlength="1"
+                                        onfocus=validate_username() onblur=validate_username()
+                                        onkeyup=validate_username() type="text" placeholder="Username" required>
+                                    <div class="alert alert-danger" id="error_username"></div>
+
+                                    <!-- password -->
+                                    <input class="form-control" name="password" minlength="1"
+                                        onfocus=validate_password() onkeyup=validate_password()
+                                        onblur=validate_password() type="password" placeholder="Password" required>
+                                    <div class="alert alert-danger" id="error_pass"></div>
+
+                                    <!-- submit -->
+                                    <button class="btn btn-outline-light" type="submit">Sign In</button><br>
+                                </form>
+
+                                <!-- signup page redirection -->
+                                <span><span style="opacity: 0.5;">Don't have an account?</span>&nbsp;&nbsp;<a
+                                        class="text-white" href="/user/signup">Register</a></span>
+
+                            </div>
+
+                            <div class="after-login-box">
+                                <img src="/static/images/loading.gif"/>
+                                <h1 class="display-3">Lets see what you have already seen and what we can recommend</h1>
+                            </div>
+
+                            <!-- validation -->
+                            <script src="/static/js/validation-login.js"></script>
+
+                            <%- include("../../partials/footer.ejs") %>
+                            <script>
+                                function logUser(){
+                                    document.getElementsByClassName("login-box")[0].style.display="none"
+                                    document.getElementsByClassName("after-login-box")[0].style.display = "block"
+                
+                                    return "/user/signin"
+                                }
+                            </script>

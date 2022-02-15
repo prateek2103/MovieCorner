@@ -1,0 +1,37 @@
+body{
+    background-color:black;
+    color:white;
+}
+
+table{
+    color:white;
+    font-size:20px;
+}
+
+thead > tr > th{
+    color:red;
+}
+tbody>tr>td:nth-child(1){
+    font-weight: bold;
+}
+
+/* tbody>tr>td:nth-child(2){
+    opacity: 0.8;
+} */
+.container-fluid{
+    width:90%;
+    margin:auto;
+}
+
+.content-box{
+    padding-top:7%;
+    margin-bottom:10%;
+}
+.content-image{
+    margin-top:15%;
+    border:1px solid white;
+    background-size: cover;
+    background-repeat:no-repeat;
+    height: 450px;
+    padding:10%;
+}
